@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>categories | Y0ung&#39;s Blog</title>
+  <title>DASCTF X GFCTF 2024 | Y0ung&#39;s Blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="categories | Y0ung&#39;s Blog">
+  <meta name="description" content="DASCTF X GFCTF 2024 | Y0ung&#39;s Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -279,19 +279,27 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="categories-" class="article article-type-categories" itemscope itemprop="blogPost">
+        <article id="post-DASCTF-X-GFCTF-2024" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">categories</h1>
+        <h1 class="article-title">DASCTF X GFCTF 2024</h1>
     
     <div class="article-meta">
         
         
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="WriteUp">WriteUp</a>
+            
+        </span>
         
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-28 15:28:45'>2024-03-28 15:28</time>
+            Created At : <time class="date" title='Updated At: 2024-04-20 19:55:40'>2024-04-20 19:45</time>
         
     </div>
     <div class="article-meta">
@@ -313,7 +321,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#badmes"><span class="toc-text">badmes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#prese"><span class="toc-text">prese</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#unwind"><span class="toc-text">unwind</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -329,7 +337,120 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <blockquote>
+<p>下午去长城杯签到签了四个小时，浪费时间说是</p>
+</blockquote>
+<h2 id="badmes"><a href="#badmes" class="headerlink" title="badmes"></a>badmes</h2><p>手搓<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-20-11-42-11.png"></p>
+<h2 id="prese"><a href="#prese" class="headerlink" title="prese"></a>prese</h2><blockquote>
+<p>gogogo，看到的都是纸老虎</p>
+</blockquote>
+<p>看的出来，确实是纸老虎<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-20-18-32-47.png"></p>
+<h2 id="unwind"><a href="#unwind" class="headerlink" title="unwind"></a>unwind</h2><blockquote>
+<p> drink fake tea</p>
+</blockquote>
+<p>SEH unwind栈回溯，moectf有一道<br>密文<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-20-18-21-20.png"></p>
+<p>main函数，标准XXTEA<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240420195029928.png"></p>
+<p>除此之外有XTEA，在unwind部分被调用两次<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-20-18-23-52.png"></p>
+<p>则解密流程为2次XTEA，1次XXTEA</p>
+<pre><code class="c">#include &lt;stdio.h&gt;  
+#include &lt;string.h&gt;
+#include &lt;stdint.h&gt;  
+
+#define xxtea_DELTA 0x9e3779b9
+#define xxtea_MX (((xxtea_z&gt;&gt;5^xxtea_y&lt;&lt;2) + (xxtea_y&gt;&gt;3^xxtea_z&lt;&lt;4)) ^ ((xxtea_sum^xxtea_y) + (xxtea_key[(xxtea_p&amp;3)^xxtea_e] ^ xxtea_z)))
+
+void decipher(unsigned int num_rounds, uint32_t v[2], uint32_t const key[4])
+&#123;
+    unsigned int i;
+    uint32_t v1 = v[0], v2 = v[1], delta = 0x61C88647, sum = -delta * num_rounds;
+    for (i = 0; i &lt; num_rounds; i++)
+    &#123;
+        v2 -= (((v1 * 16) ^ (v1 &gt;&gt; 5)) + v1) ^ (sum + key[(sum &gt;&gt; 11) &amp; 3]);
+        sum += delta;
+        v1 -= (((v2 * 16) ^ (v2 &gt;&gt; 5)) + v2) ^ (sum + key[sum &amp; 3]);
+    &#125;
+    v[0] = v1;
+    v[1] = v2;
+&#125;
+
+void xxtea(uint32_t* xxtea_origin, int xxtea_n, uint32_t const xxtea_key[4])
+&#123;
+    uint32_t xxtea_y, xxtea_z, xxtea_sum;
+    unsigned xxtea_p, xxtea_rounds, xxtea_e;
+    if (xxtea_n &gt; 1)            /* Coding Part */
+    &#123;
+        xxtea_rounds = 6 + 52 / xxtea_n;
+        xxtea_sum = 0;
+        xxtea_z = xxtea_origin[xxtea_n - 1];
+        do
+        &#123;
+            xxtea_sum += xxtea_DELTA;
+            xxtea_e = (xxtea_sum &gt;&gt; 2) &amp; 3;
+            for (xxtea_p = 0; xxtea_p &lt; xxtea_n - 1; xxtea_p++)
+            &#123;
+                xxtea_y = xxtea_origin[xxtea_p + 1];
+                xxtea_z = xxtea_origin[xxtea_p] += xxtea_MX;
+            &#125;
+            xxtea_y = xxtea_origin[0];
+            xxtea_z = xxtea_origin[xxtea_n - 1] += xxtea_MX;
+        &#125; while (--xxtea_rounds);
+    &#125;
+    else if (xxtea_n &lt; -1)      /* Decoding Part */
+    &#123;
+        xxtea_n = -xxtea_n;
+        xxtea_rounds = 6 + 52 / xxtea_n;
+        printf(&quot;%u\n&quot;,xxtea_rounds);
+        xxtea_sum = xxtea_rounds * xxtea_DELTA;
+        printf(&quot;%u\n&quot;,xxtea_sum);
+        xxtea_y = xxtea_origin[0];
+        do
+        &#123;
+            xxtea_e = (xxtea_sum &gt;&gt; 2) &amp; 3;
+            for (xxtea_p = xxtea_n - 1; xxtea_p &gt; 0; xxtea_p--)
+            &#123;
+                xxtea_z = xxtea_origin[xxtea_p - 1];
+                xxtea_y = xxtea_origin[xxtea_p] -= xxtea_MX;
+            &#125;
+            xxtea_z = xxtea_origin[xxtea_n - 1];
+            xxtea_y = xxtea_origin[0] -= xxtea_MX;
+            xxtea_sum -= xxtea_DELTA;
+        &#125; while (--xxtea_rounds);
+    &#125;
+&#125;
+int main()
+&#123;
+    uint32_t enc[] = &#123;0x87AAA7C1,0x857321B6,0x0E71D28C,0xCADF39F2,0x58EFCA14,0xD7E7D9D8,0xF29F5C5D,0x5F5ED45E&#125;;
+    uint32_t const key[4] = &#123;0x00000044,0x00000041,0x00000053,0x00000021&#125;;
+    int n = sizeof(enc) / sizeof(uint32_t);
+    decipher(36,enc,key);
+    decipher(36,enc,key);
+    decipher(36,&amp;enc[2],key);
+    decipher(36,&amp;enc[2],key);
+    decipher(36,&amp;enc[4],key);
+    decipher(36,&amp;enc[4],key);
+    decipher(36,&amp;enc[6],key);
+    decipher(36,&amp;enc[6],key);
+    xxtea(enc,-n,key);
+
+    for (int i = 0; i &lt; n; i++)&#123;
+        printf(&quot;%x&quot;,enc[i]);
+    &#125;
+    printf(&quot;\n&quot;);
+
+    for (int i = 0; i &lt; n; i++)
+    &#123;
+        //printf(&quot;0x%d &quot;, enc[i]);
+        for (int j = 0; j &lt; 4; j++)
+        &#123;
+            printf(&quot;%c&quot;, (enc[i] &gt;&gt; (j * 8)) &amp; 0xFF);
+        &#125;
+    &#125;
+    printf(&quot;\n&quot;);
+    return 0;
+
+&#125;
+</code></pre>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达. </span>
     </div>
