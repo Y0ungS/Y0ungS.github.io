@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>about | Y0ung&#39;s Blog</title>
+  <title>DozerCTF2024 | Y0ung&#39;s Blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="about | Y0ung&#39;s Blog">
+  <meta name="description" content="DozerCTF2024 | Y0ung&#39;s Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="tags">
@@ -297,19 +297,27 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-DozerCTF2024" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">about</h1>
+        <h1 class="article-title">DozerCTF2024</h1>
     
     <div class="article-meta">
         
         
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="WriteUp">WriteUp</a>
+            
+        </span>
         
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-28 15:28:35'>2024-03-28 15:28</time>
+            Created At : <time class="date" title='Updated At: 2024-04-28 16:44:16'>2024-04-28 16:36</time>
         
     </div>
     <div class="article-meta">
@@ -331,7 +339,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#very-long-access"><span class="toc-text">very_long_access</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pppyyy"><span class="toc-text">pppyyy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E6%98%A5%E5%B1%B1"><span class="toc-text">上春山</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#se"><span class="toc-text">se</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shuiyin"><span class="toc-text">shuiyin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%97%E4%B8%80%E4%B8%8B"><span class="toc-text">套一下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strange-code"><span class="toc-text">strange_code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezzzzz-Forensics"><span class="toc-text">ezzzzz_Forensics</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -347,7 +355,85 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="very-long-access"><a href="#very-long-access" class="headerlink" title="very_long_access"></a>very_long_access</h2><p>时间戳被打乱，排序一下<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-27-22-25-00.png"><br><code>Dozerctf&#123;Y0u-Can-R3a11y-F1nd-Th3F14g!&#125;</code></p>
+<h2 id="pppyyy"><a href="#pppyyy" class="headerlink" title="pppyyy"></a>pppyyy</h2><blockquote>
+<p>简单的python</p>
+</blockquote>
+<pre><code class="python">from z3 import *
+s = Solver()
+nums = [0 for _ in range(14)]
+for i in range(14):
+    nums[i] = Int(f&#39;nums[&#123;i&#125;]&#39;)
+
+s.add((((((nums[0] * 2 + nums[1] - 4 - nums[2] * 3 - nums[3] - 3) + nums[4] * 5 + nums[5] * 5 - nums[6] - 3) + nums[7] + 2 - nums[8]) + 3 + nums[9] - 3 - nums[10] * 4) + nums[11] * 3 - nums[12] - 2) + nums[13] + 3 == 56)
+s.add(((((nums[0] + 2 - nums[1] * 5) + nums[2] - 3 - nums[3]) + 5 - nums[4] * 4 - nums[5]) + 5 + nums[6] * 4 + nums[7] * 5 + nums[8] * 3 + nums[9] * 5 - nums[10] - 5 - nums[11] - 2 - nums[12] - 5) + nums[13] - 3 == 681)
+s.add((((nums[0] * 5 + nums[1] * 3 - nums[2] - 2) + nums[3] * 4 + nums[4] - 3) + nums[5] * 4 + nums[6] * 4 + nums[7] + 3 - nums[8] * 2 - nums[9]) + 3 + nums[10] + 3 - nums[11] * 2 - nums[12] * 3 - nums[13] * 2 == 1129)
+s.add((((((nums[0] * 5 - nums[1] - 2) + nums[2] - 2) + nums[3] + 5 - nums[4]) + 3 + nums[5] * 2 + nums[6] + 2 - nums[7] * 4 - nums[8] - 2) + nums[9] + 5 + nums[10] + 4 - nums[11]) + 3 + nums[12] + 3 - nums[13] * 5 == 55)
+s.add(((((nums[0] + 2 - nums[1] * 4 - nums[2] * 3) + nums[3] + 3 + nums[4] * 4 + nums[5] * 3 - nums[6]) + 5 + nums[7] - 2 - nums[8]) + 5 + nums[9] * 4 - nums[10] - 2 - nums[11] - 4) + nums[12] * 5 - nums[13] - 4 == 673)
+s.add((((((nums[0] - 5 - nums[1] - 4 - nums[2] - 4 - nums[3]) + 2 + nums[4] * 4 - nums[5]) + 4 + nums[6] + 3 + nums[7] + 5 - nums[8] * 5 - nums[9]) + 2 + nums[10] + 2 + nums[11] - 2) + nums[12] * 3 - nums[13]) + 4 == 249)
+s.add(((((((nums[0] * 4 + nums[1] - 4) + nums[2] - 5) + nums[3] - 2 - nums[4] * 2) + nums[5] + 3 + nums[6] - 3 - nums[7]) + 3 - nums[8] * 4 - nums[9] * 3) + nums[10] * 2 + nums[11] * 5 + nums[12] - 4) + nums[13] - 4 == 422)
+s.add(((((((nums[0] * 3 - nums[1] - 3 - nums[2] - 3) + nums[3] - 2 - nums[4] - 5) + nums[5] * 2 + nums[6] - 4) + nums[7] - 5) + nums[8] * 5 - nums[9] * 3 - nums[10]) + 5 - nums[11] - 4 - nums[12] * 5) + nums[13] - 4 == 49)
+s.add((((((((nums[0] - 4 - nums[1]) + 3 - nums[2]) + 4 - nums[3] - 4) + nums[4] + 5 - nums[5] * 3) + nums[6] + 2 + nums[7] * 4 - nums[8] - 4 - nums[9]) + 3 - nums[10] * 5) + nums[11] * 2 + nums[12] * 3 - nums[13]) + 2 == 0)
+s.add((((((((nums[0] - 5 - nums[1]) + 5 - nums[2] - 4) + nums[3] + 3 + nums[4] - 2) + nums[5] - 4) + nums[6] * 2 - nums[7] - 4 - nums[8] * 4) + nums[9] + 4 + nums[10] * 4 - nums[11]) + 5 - nums[12]) + 4 + nums[13] + 4 == 268)
+s.add(((((((nums[0] - 5 - nums[1]) + 3 - nums[2]) + 2 + nums[3] - 4 - nums[4]) + 4 + nums[5] - 5 - nums[6]) + 2 + nums[7] - 4 - nums[8] - 5 - nums[9] - 5 - nums[10] - 2 - nums[11]) + 5 + nums[12] - 3) + nums[13] + 4 == -162)
+s.add(((((((((nums[0] + 5 - nums[1]) + 4 + nums[2] * 5 - nums[3] - 3) + nums[4] - 5 - nums[5] - 5) + nums[6] + 3 - nums[7] * 5 - nums[8] * 3) + nums[9] - 4) + nums[10] - 2) + nums[11] - 3) + nums[12] - 5) + nums[13] + 2 == -2)
+s.add(((((nums[0] + 4 + nums[1] - 5 - nums[2]) + 3 + nums[3] + 3 - nums[4] - 4 - nums[5]) + 3 + nums[6] - 3 - nums[7] - 5 - nums[8]) + 3 + nums[9] - 5 - nums[10] - 2) + nums[11] + 5 + nums[12] * 5 - nums[13] - 5 == 433)
+s.add((((((nums[0] + 4 + nums[1] + 4 + nums[2] + 3 - nums[3] - 2) + nums[4] - 4) + nums[5] + 3 - nums[6] - 4 - nums[7] * 2) + nums[8] - 3) + nums[9] + 2 + nums[10] * 3 - nums[11] * 4) + nums[12] + 5 + nums[13] * 3 == 515)
+
+print(s.check())
+print(s.model())
+
+nums[7] = 116
+nums[3] = 121
+nums[5] = 53
+nums[2] = 98
+nums[9] = 48
+nums[12] = 122
+nums[10] = 110
+nums[11] = 38
+nums[13] = 51
+nums[4] = 95
+nums[8] = 104
+nums[6] = 121
+nums[0] = 66
+nums[1] = 64
+
+print(bytes(nums))
+#b&#39;B@by_5yth0n&amp;z3&#39;
+</code></pre>
+<p><code>Dozerctf&#123;B@by_5yth0n&amp;z3&#125;</code></p>
+<h2 id="上春山"><a href="#上春山" class="headerlink" title="上春山"></a>上春山</h2><blockquote>
+<p>老海：佛前莲花开三朵 腿长：春来杨柳摘几支 老海：这从大清换成民国，生意还不都是都是零毛碎琴的，没点儿啊 腿长：排琴，看你门清告诉你个杵门子，听说倒埝有个船沉了，里都是枸迷杵啊，缺一个海上的相家找找地方，找到地方得手后均杵 老海：这杵门子硬啊，我去倒埝问问，汪天后给你详细位置 flag是也是黑话，但是要转md5</p>
+</blockquote>
+<p>群里说是有名的沉船事件<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-27-22-31-11.png"></p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428163804485.png"></p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-27-22-31-47.png"></p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428163848069.png"></p>
+<h2 id="se"><a href="#se" class="headerlink" title="se"></a>se</h2><p>播音号<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-27-22-32-29.png"></p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428163906174.png"></p>
+<p>压缩包密码是播音号<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-27-22-43-19.png"></p>
+<h2 id="shuiyin"><a href="#shuiyin" class="headerlink" title="shuiyin"></a>shuiyin</h2><p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164001034.png"></p>
+<h2 id="套一下"><a href="#套一下" class="headerlink" title="套一下"></a>套一下</h2><p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-28-10-27-30.png"></p>
+<pre><code class="python">key = &#39;you_really_think_it_is_such_easy?&#39;
+msg = [0x3d,0x1f,0x0d,0x07,0x04,0x09,0x13,0x15,0x0f,0xf6,0x01,0x4e,0x07,0x29,0x4d,0x09,0x30,0x08,0xb5,0x13,0x11,0xe4,0x0c,0xd5,0xeb,0x4d,0xe3,0x1d,0xa0,0x03]
+for i in range(len(msg)):
+    print(chr(msg[i] ^ (i + ord(key[i]))),end=&#39;&#39;)
+</code></pre>
+<h2 id="strange-code"><a href="#strange-code" class="headerlink" title="strange_code"></a>strange_code</h2><p>在线网站识别</p>
+<p>.-.—-… —.-..-.. .—–…. .-..—.-. -.-…—. -..—-… .-…—-. .–…—. ..—–… —.-…-. –..-..–. .-.-..—. .-.—..-. -.-..—.. .—.-.-.. -.–..-.-. .-.-..—. .-.—..-. …—.–. -..-.-.–. —.-…-. .-..–.–. -.-…—. —–….. ….—–.</p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-28-14-04-06.png"></p>
+<h2 id="ezzzzz-Forensics"><a href="#ezzzzz-Forensics" class="headerlink" title="ezzzzz_Forensics"></a>ezzzzz_Forensics</h2><p>puzzle嗦一下<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164056289.png"><br>vc挂载，密码和文件都要用上</p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164124097.png"><br>file检查，E01镜像，改后缀名，挂载</p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164150970.png"></p>
+<p>恢复密钥只有一半<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164208298.png"><br>抽象画，npiet</p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164229415.png"></p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164237485.png"></p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164255956.png"></p>
+<p>八进制</p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164307182.png"></p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164314483.png"></p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164327282.png"></p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达. </span>
     </div>

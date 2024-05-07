@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>about | Y0ung&#39;s Blog</title>
+  <title>高校网络安全管理运维赛 | Y0ung&#39;s Blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="about | Y0ung&#39;s Blog">
+  <meta name="description" content="高校网络安全管理运维赛 | Y0ung&#39;s Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="tags">
@@ -297,19 +297,27 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-高校网络安全管理运维赛" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">about</h1>
+        <h1 class="article-title">高校网络安全管理运维赛</h1>
     
     <div class="article-meta">
         
         
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="WriteUp">WriteUp</a>
+            
+        </span>
         
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-28 15:28:35'>2024-03-28 15:28</time>
+            Created At : <time class="date" title='Updated At: 2024-05-07 21:40:45'>2024-05-07 21:34</time>
         
     </div>
     <div class="article-meta">
@@ -331,7 +339,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Misc-%E7%AD%BE%E5%88%B0"><span class="toc-text">[Misc]签到</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Misc-%E9%92%93%E9%B1%BC%E9%82%AE%E4%BB%B6%E8%AF%86%E5%88%AB"><span class="toc-text">[Misc]钓鱼邮件识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Misc-easyshell"><span class="toc-text">[Misc]easyshell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Misc-SecretDB"><span class="toc-text">[Misc]SecretDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Misc-Gateway"><span class="toc-text">[Misc]Gateway</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Misc-zip"><span class="toc-text">[Misc]zip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reverse-easyre"><span class="toc-text">[Reverse]easyre</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reverse-babyre"><span class="toc-text">[Reverse]babyre</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -347,7 +355,93 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <blockquote>
+<p>仅记录个人参与解出</p>
+</blockquote>
+<h2 id="Misc-签到"><a href="#Misc-签到" class="headerlink" title="[Misc]签到"></a>[Misc]签到</h2><p>拆分gif帧：<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-21-40-17150889716871.png"><br>手读一下然后rot13解码：<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-22-05.png"><br><code>flag&#123;welcome-every-player&#125;</code></p>
+<h2 id="Misc-钓鱼邮件识别"><a href="#Misc-钓鱼邮件识别" class="headerlink" title="[Misc]钓鱼邮件识别"></a>[Misc]钓鱼邮件识别</h2><blockquote>
+<p>你是 Foobar 大学的安全分析师。一位名叫张三的员工报告了一封可疑的邮件，并将其提供给你进行分析。你的任务是仔细检查这封邮件，识别潜在的钓鱼指标，找出表明这是一次钓鱼尝试的线索。<br>可疑邮件以 EML 文件的形式提供，请查看附件。<br>本题共有3个flag</p>
+</blockquote>
+<p><strong>Flag1</strong><br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-22-44.png"><br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-22-54.png"><br><code>flag&#123;weLcoMeTO&#125;</code><br><strong>Flag2</strong><br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-23-25.png"><br><code>flag&#123;phIShhunTinG&#125;</code><br><strong>Flag3</strong><br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-23-58.png"><br>得知flag有3部分。<br>使用<a target="_blank" rel="noopener" href="https://powerdmarc.com/zh/analyzer/">在线网站</a>分析得到flag2和flag3，这里spf没有分析出来，换用nslookup分析：<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-25-03.png"><br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-25-11.png"><br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-25-16.png"><br><code>flag&#123;N0wY0u_Kn0wH0wt0_ANAlys1sDNS&#125;</code></p>
+<h2 id="Misc-easyshell"><a href="#Misc-easyshell" class="headerlink" title="[Misc]easyshell"></a>[Misc]easyshell</h2><blockquote>
+<p>网站被攻击了！你能从流量文件中分析出被偷走了什么数据么？</p>
+</blockquote>
+<p>冰蝎流量，密钥是默认密钥，工具梭一下：<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-25-47.png"><br>得到一个zip:<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-25-53.png"><br>继续向下解密得到：<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-25-58.png"><br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-26-03.png"><br>找不到明文，发现CRC32值一致：<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-26-09.png"><br>尝试明文攻击<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-26-16.png"><br>解压得到flag<br><code>flag&#123;70854278-ea0c-462e-bc18-468c7a04a505&#125;</code></p>
+<h2 id="Misc-SecretDB"><a href="#Misc-SecretDB" class="headerlink" title="[Misc]SecretDB"></a>[Misc]SecretDB</h2><blockquote>
+<p>Find secret from DB.</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-26-53.png"><br>有大量的<code>01 0F</code>，四个字节一组，则第三字节为顺序，第四字节为数值，拼接得到<br><code>flag&#123;f6291bf0-923c-4ba6-?2d7-ffabba4e8f0b&#125;</code><br>其中?没有对应数据，uuid格式，0-f尝试<br><code>flag&#123;f6291bf0-923c-4ba6-82d7-ffabba4e8f0b&#125;</code></p>
+<h2 id="Misc-Gateway"><a href="#Misc-Gateway" class="headerlink" title="[Misc]Gateway"></a>[Misc]Gateway</h2><blockquote>
+<p>小张买了一个新的网关，并暴露到了外网，由于默认口令的原因，黑客很快登录了系统并重置了密码，这个黑客甚至在他的电脑上留下了这个网站的部分代码，你能帮他找到密码并解密成功吗？</p>
+</blockquote>
+<p>翻文件看<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-28-36.png"><br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-28-46.png"><br>对应位置替换为括号即可<br><code>flag&#123;ad1985868133e8cf1828cb84adbe5a5b&#125;</code></p>
+<h2 id="Misc-zip"><a href="#Misc-zip" class="headerlink" title="[Misc]zip"></a>[Misc]zip</h2><blockquote>
+<p>Alice 把 flag 用你的 token 压缩并加密成了一个 zip 压缩包，并且希望你提供 flag 来解压这个压缩包。<br>如果解压成功， Alice 就会告诉你 flag 的内容，但好像 Alice 的代码实现有些问题？</p>
+</blockquote>
+<p>代码限制密码长度64<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-29-20.png"><br>又因为开头一定是<code>flag&#123;</code>，但是password中肯定没有这部分，选择使用5个del删除，exp:</p>
+<pre><code class="python">from pwn import *
+
+context(arch=&#39;amd64&#39;,os=&#39;linux&#39;,log_level = &#39;debug&#39;)
+
+p = remote(&quot;prob03.contest.pku.edu.cn&quot;, 10003)
+
+p.sendlineafter(&quot;Please input your token: &quot;, &#39;240:MEYCIQDaJ2TKXBAaSUKBhZxmx8uDg5Y2ighJypzmN1aIMUthqgIhAOmi1UhwQEzCwtFsnQP-kosrbaFA9Pd5T9MYKoGo6YMb&#39;)
+p.sendlineafter(&quot;your token:&quot;, &#39;240:MEYCIQDaJ2TKXBAaSUKBhZxmx8uDg5Y2ighJypzmN1aIMUthqgIhAOmi1Uhw&#39;)
+p.sendlineafter(&quot;your flag:&quot;, &quot;flag&#123;&quot; + 5 * chr(127) + &#39;240:MEYCIQDaJ2TKXBAaSUKBhZxmx8uDg5Y2ighJypzmN1aIMUthqgIhAOmi1Uhw&#39;)
+
+p.interactive()
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-30-37.png"><br><code>flag&#123;n3v3R-90Nn4-91V3-y0u-uP&#125;</code></p>
+<h2 id="Reverse-easyre"><a href="#Reverse-easyre" class="headerlink" title="[Reverse]easyre"></a>[Reverse]easyre</h2><blockquote>
+<p>flag被奇怪编码过了，试试看能否还原出原文？</p>
+</blockquote>
+<p>密文<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-32-07.png"><br>shift+F12变表base64<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-32-12.png"><br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-32-22.png"><br><code>flag&#123;B4se64_1s_s0_e4sy&#125;</code></p>
+<h2 id="Reverse-babyre"><a href="#Reverse-babyre" class="headerlink" title="[Reverse]babyre"></a>[Reverse]babyre</h2><blockquote>
+<p>真正的程序似乎被藏起来了，你能找到flag吗？</p>
+</blockquote>
+<p>UPX 脱壳<br>main函数<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-05-07-21-32-58.png"><br>发现有四个函数分别决定了四个数的值，用z3直接解，这里v4爆了很多次</p>
+<pre><code class="python">from z3 import *
+
+v1 = 0x36145344 + 0xADB1D018  
+print(v1)  
+
+  
+v2 = BitVec(&#39;v2&#39;,32)  
+s = Solver()  
+s.add((v2 | 0x8E03BEC3) - 3 * (v2 &amp; 0x71FC413C) + v2 == 0x902C7FF8 )  
+s.check()  
+print(s.model())  
+  
+v3 = BitVec(&#39;v3&#39;,32)  
+x = Solver()  
+x.add(4 * ((~v3 &amp; 0xA8453437) + 2 * ~(~v3 | 0xA8453437))+ -3 * (~v3 | 0xA8453437)+ 3 * ~(v3 | 0xA8453437)- (-10 * (v3 &amp; 0xA8453437) + (v3 ^ 0xA8453437)) == 551387557)  
+x.check()  
+print(x.model())  
+  
+v4 = BitVec(&#39;v4&#39;,32)  
+z = Solver()  
+z.add(11 * ~(v4 ^ 0xE33B67BD)  
+     + 4 * ~(~v4 | 0xE33B67BD)  
+     - (6 * (v4 &amp; 0xE33B67BD)  
+      + 12 * ~(v4 | 0xE33B67BD))  
+     + 3 * (v4 &amp; 0xD2C7FC0C)  
+     + -5 * v4  
+     - 2 * ~(v4 | 0xD2C7FC0C)  
+     + ~(v4 | 0x2D3803F3)  
+     + 4 * (v4 &amp; 0x2D3803F3)  
+     - -2 * (v4 | 0x2D3803F3) == 0xCE1066DC)  
+z.add(v4 &lt; 0x10000000)  
+z.add(v4 != 2944614531)  
+z.add(v4 != 4018356355)  
+z.add(v4 != 2214805635)  
+z.add(v4 != 4093853827)  
+z.add(v4 != 3020112003)  
+z.add(v4 != 2943303811)  
+z.check()  
+print(z.model())
+</code></pre>
+<p><code>flag&#123;e3c6235c-05d9434d-04b1edf3-04034083&#125;</code></p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达. </span>
     </div>
