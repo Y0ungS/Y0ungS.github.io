@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>DozerCTF2024 | Y0ung&#39;s Blog</title>
+  <title>DASCTF X HDCTF 2024 公开赛 | Y0ung&#39;s Blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="DozerCTF2024 | Y0ung&#39;s Blog">
+  <meta name="description" content="DASCTF X HDCTF 2024 公开赛 | Y0ung&#39;s Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -324,9 +324,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-DozerCTF2024" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-DASCTF-X-HDCTF-2024-公开赛" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">DozerCTF2024</h1>
+        <h1 class="article-title">DASCTF X HDCTF 2024 公开赛</h1>
     
     <div class="article-meta">
         
@@ -344,7 +344,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-28 16:44:16'>2024-04-28 16:36</time>
+            Created At : <time class="date" title='Updated At: 2024-06-03 00:02:50'>2024-06-02 23:54</time>
         
     </div>
     <div class="article-meta">
@@ -366,7 +366,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#very-long-access"><span class="toc-text">very_long_access</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pppyyy"><span class="toc-text">pppyyy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E6%98%A5%E5%B1%B1"><span class="toc-text">上春山</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#se"><span class="toc-text">se</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shuiyin"><span class="toc-text">shuiyin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%97%E4%B8%80%E4%B8%8B"><span class="toc-text">套一下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strange-code"><span class="toc-text">strange_code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezzzzz-Forensics"><span class="toc-text">ezzzzz_Forensics</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#REVERSE"><span class="toc-text">REVERSE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#baby-rop"><span class="toc-text">baby_rop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FinalEncrypt"><span class="toc-text">FinalEncrypt</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ez-mc"><span class="toc-text">Ez_mc</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -382,84 +382,76 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="very-long-access"><a href="#very-long-access" class="headerlink" title="very_long_access"></a>very_long_access</h2><p>时间戳被打乱，排序一下<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-27-22-25-00.png"><br><code>Dozerctf&#123;Y0u-Can-R3a11y-F1nd-Th3F14g!&#125;</code></p>
-<h2 id="pppyyy"><a href="#pppyyy" class="headerlink" title="pppyyy"></a>pppyyy</h2><blockquote>
-<p>简单的python</p>
-</blockquote>
-<pre><code class="python">from z3 import *
-s = Solver()
-nums = [0 for _ in range(14)]
-for i in range(14):
-    nums[i] = Int(f&#39;nums[&#123;i&#125;]&#39;)
-
-s.add((((((nums[0] * 2 + nums[1] - 4 - nums[2] * 3 - nums[3] - 3) + nums[4] * 5 + nums[5] * 5 - nums[6] - 3) + nums[7] + 2 - nums[8]) + 3 + nums[9] - 3 - nums[10] * 4) + nums[11] * 3 - nums[12] - 2) + nums[13] + 3 == 56)
-s.add(((((nums[0] + 2 - nums[1] * 5) + nums[2] - 3 - nums[3]) + 5 - nums[4] * 4 - nums[5]) + 5 + nums[6] * 4 + nums[7] * 5 + nums[8] * 3 + nums[9] * 5 - nums[10] - 5 - nums[11] - 2 - nums[12] - 5) + nums[13] - 3 == 681)
-s.add((((nums[0] * 5 + nums[1] * 3 - nums[2] - 2) + nums[3] * 4 + nums[4] - 3) + nums[5] * 4 + nums[6] * 4 + nums[7] + 3 - nums[8] * 2 - nums[9]) + 3 + nums[10] + 3 - nums[11] * 2 - nums[12] * 3 - nums[13] * 2 == 1129)
-s.add((((((nums[0] * 5 - nums[1] - 2) + nums[2] - 2) + nums[3] + 5 - nums[4]) + 3 + nums[5] * 2 + nums[6] + 2 - nums[7] * 4 - nums[8] - 2) + nums[9] + 5 + nums[10] + 4 - nums[11]) + 3 + nums[12] + 3 - nums[13] * 5 == 55)
-s.add(((((nums[0] + 2 - nums[1] * 4 - nums[2] * 3) + nums[3] + 3 + nums[4] * 4 + nums[5] * 3 - nums[6]) + 5 + nums[7] - 2 - nums[8]) + 5 + nums[9] * 4 - nums[10] - 2 - nums[11] - 4) + nums[12] * 5 - nums[13] - 4 == 673)
-s.add((((((nums[0] - 5 - nums[1] - 4 - nums[2] - 4 - nums[3]) + 2 + nums[4] * 4 - nums[5]) + 4 + nums[6] + 3 + nums[7] + 5 - nums[8] * 5 - nums[9]) + 2 + nums[10] + 2 + nums[11] - 2) + nums[12] * 3 - nums[13]) + 4 == 249)
-s.add(((((((nums[0] * 4 + nums[1] - 4) + nums[2] - 5) + nums[3] - 2 - nums[4] * 2) + nums[5] + 3 + nums[6] - 3 - nums[7]) + 3 - nums[8] * 4 - nums[9] * 3) + nums[10] * 2 + nums[11] * 5 + nums[12] - 4) + nums[13] - 4 == 422)
-s.add(((((((nums[0] * 3 - nums[1] - 3 - nums[2] - 3) + nums[3] - 2 - nums[4] - 5) + nums[5] * 2 + nums[6] - 4) + nums[7] - 5) + nums[8] * 5 - nums[9] * 3 - nums[10]) + 5 - nums[11] - 4 - nums[12] * 5) + nums[13] - 4 == 49)
-s.add((((((((nums[0] - 4 - nums[1]) + 3 - nums[2]) + 4 - nums[3] - 4) + nums[4] + 5 - nums[5] * 3) + nums[6] + 2 + nums[7] * 4 - nums[8] - 4 - nums[9]) + 3 - nums[10] * 5) + nums[11] * 2 + nums[12] * 3 - nums[13]) + 2 == 0)
-s.add((((((((nums[0] - 5 - nums[1]) + 5 - nums[2] - 4) + nums[3] + 3 + nums[4] - 2) + nums[5] - 4) + nums[6] * 2 - nums[7] - 4 - nums[8] * 4) + nums[9] + 4 + nums[10] * 4 - nums[11]) + 5 - nums[12]) + 4 + nums[13] + 4 == 268)
-s.add(((((((nums[0] - 5 - nums[1]) + 3 - nums[2]) + 2 + nums[3] - 4 - nums[4]) + 4 + nums[5] - 5 - nums[6]) + 2 + nums[7] - 4 - nums[8] - 5 - nums[9] - 5 - nums[10] - 2 - nums[11]) + 5 + nums[12] - 3) + nums[13] + 4 == -162)
-s.add(((((((((nums[0] + 5 - nums[1]) + 4 + nums[2] * 5 - nums[3] - 3) + nums[4] - 5 - nums[5] - 5) + nums[6] + 3 - nums[7] * 5 - nums[8] * 3) + nums[9] - 4) + nums[10] - 2) + nums[11] - 3) + nums[12] - 5) + nums[13] + 2 == -2)
-s.add(((((nums[0] + 4 + nums[1] - 5 - nums[2]) + 3 + nums[3] + 3 - nums[4] - 4 - nums[5]) + 3 + nums[6] - 3 - nums[7] - 5 - nums[8]) + 3 + nums[9] - 5 - nums[10] - 2) + nums[11] + 5 + nums[12] * 5 - nums[13] - 5 == 433)
-s.add((((((nums[0] + 4 + nums[1] + 4 + nums[2] + 3 - nums[3] - 2) + nums[4] - 4) + nums[5] + 3 - nums[6] - 4 - nums[7] * 2) + nums[8] - 3) + nums[9] + 2 + nums[10] * 3 - nums[11] * 4) + nums[12] + 5 + nums[13] * 3 == 515)
-
-print(s.check())
-print(s.model())
-
-nums[7] = 116
-nums[3] = 121
-nums[5] = 53
-nums[2] = 98
-nums[9] = 48
-nums[12] = 122
-nums[10] = 110
-nums[11] = 38
-nums[13] = 51
-nums[4] = 95
-nums[8] = 104
-nums[6] = 121
-nums[0] = 66
-nums[1] = 64
-
-print(bytes(nums))
-#b&#39;B@by_5yth0n&amp;z3&#39;
+        <h2 id="REVERSE"><a href="#REVERSE" class="headerlink" title="REVERSE"></a>REVERSE</h2><h3 id="baby-rop"><a href="#baby-rop" class="headerlink" title="baby_rop"></a>baby_rop</h3><p>调试过程中发现会在<code>debug003</code>和<code>.text</code>来回跳，应该就是题目说的ROP了</p>
+<p>跟踪分析<code>debug003</code>段里的逻辑</p>
+<p>长度校验</p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240602235941604.png"></p>
+<pre><code class="python">print(0x25649da8^0x25649d88)
+#32
 </code></pre>
-<p><code>Dozerctf&#123;B@by_5yth0n&amp;z3&#125;</code></p>
-<h2 id="上春山"><a href="#上春山" class="headerlink" title="上春山"></a>上春山</h2><blockquote>
-<p>老海：佛前莲花开三朵 腿长：春来杨柳摘几支 老海：这从大清换成民国，生意还不都是都是零毛碎琴的，没点儿啊 腿长：排琴，看你门清告诉你个杵门子，听说倒埝有个船沉了，里都是枸迷杵啊，缺一个海上的相家找找地方，找到地方得手后均杵 老海：这杵门子硬啊，我去倒埝问问，汪天后给你详细位置 flag是也是黑话，但是要转md5</p>
-</blockquote>
-<p>群里说是有名的沉船事件<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-27-22-31-11.png"></p>
-<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428163804485.png"></p>
-<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-27-22-31-47.png"></p>
-<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428163848069.png"></p>
-<h2 id="se"><a href="#se" class="headerlink" title="se"></a>se</h2><p>播音号<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-27-22-32-29.png"></p>
-<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428163906174.png"></p>
-<p>压缩包密码是播音号<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-27-22-43-19.png"></p>
-<h2 id="shuiyin"><a href="#shuiyin" class="headerlink" title="shuiyin"></a>shuiyin</h2><p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164001034.png"></p>
-<h2 id="套一下"><a href="#套一下" class="headerlink" title="套一下"></a>套一下</h2><p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-28-10-27-30.png"></p>
-<pre><code class="python">key = &#39;you_really_think_it_is_such_easy?&#39;
-msg = [0x3d,0x1f,0x0d,0x07,0x04,0x09,0x13,0x15,0x0f,0xf6,0x01,0x4e,0x07,0x29,0x4d,0x09,0x30,0x08,0xb5,0x13,0x11,0xe4,0x0c,0xd5,0xeb,0x4d,0xe3,0x1d,0xa0,0x03]
+<p>xor+add</p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240603000012427.png"></p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240603000026322.png"></p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240603000042238.png"></p>
+<p>用idapython提取数据</p>
+<pre><code class="Python">from idaapi import get_reg_val
+print(&#39;rax = &#39;+hex(get_reg_val(&#39;rax&#39;)))
+print(&#39;rsi = &#39;+hex(get_reg_val(&#39;rsi&#39;)))
+</code></pre>
+<p>exp</p>
+<pre><code class="python">rsi = [0x9a7ba6984ab8636b, 0x8f739f7345dc15cf,0x399f7938c150ea1a,0x7d454145674f5dd5]
+tmp = [0x11db2a3f, 0x30836d0f,0xad48145,0x1ecb02bb]
+for i in range(len(rsi)):
+    rsi[i] ^= tmp[i]
+    value = (rsi[i] - 0x343230324E494448) ^ 0x343230324E494448
+    print(bytes.fromhex(hex(value)[2:]).decode()[::-1],end=&quot;&quot;)
+</code></pre>
+<h3 id="FinalEncrypt"><a href="#FinalEncrypt" class="headerlink" title="FinalEncrypt"></a>FinalEncrypt</h3><p>简要分析，根据时间戳生成key，然后进行加密</p>
+<pre><code class="python">&gt;&gt;&gt; os.path.getmtime(&#39;./Encryption.exe.enc&#39;)
+1715156422.0
+&gt;&gt;&gt; os.path.getmtime(&#39;./flag.md.enc&#39;)
+1715156519.0
+&gt;&gt;&gt; hex(1715156422)
+&#39;0x663b35c6&#39;
+&gt;&gt;&gt; hex(1715156519)
+&#39;0x663b3627&#39;
+</code></pre>
+<p>动调改值得到key</p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240603000206952.png"></p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240603000220786.png"></p>
+<p>第二个程序还是根据时间戳生成，查表加密，用<code>Encryption.exe</code>的时间戳往后尝试</p>
+<p><code>1715156464</code>时，exp可以跑出来，时间戳相差不到一分钟</p>
+<pre><code class="Python">table = [ 
+  0x98, 0x87, 0x8C, 0x80, 0x09, 0x90, 0x94, 0x3E, 0xCB, 0xFA,
+  0x9C, 0xD0, 0x05, 0x2C, 0x50, 0x8D, 0x31, 0x79, 0x32, 0x86,
+  0x01, 0xA2, 0xBC, 0x0B, 0x56, 0x2F, 0x59, 0x54, 0x67, 0x5F,
+  0x89, 0x3B, 0x4C, 0x06, 0x68, 0xDD, 0xCD, 0xC4, 0x0C, 0x37,
+  0xCF, 0x5E, 0x1E, 0x0A, 0x8A, 0x23, 0xCA, 0xEE, 0xFF, 0x3C,
+  0xD8, 0x38, 0xE3, 0x6D, 0xFE, 0x61, 0xFC, 0xE9, 0x7B, 0x19,
+  0x10, 0xDC, 0x49, 0x8E, 0xF2, 0x78, 0xD7, 0xE1, 0xE0, 0x95,
+  0xA1, 0x5B, 0xA9, 0xC0, 0x2D, 0x48, 0xD2, 0x18, 0xD4, 0x7F,
+  0xA8, 0x2A, 0xFB, 0x16, 0xDB, 0x07, 0x4A, 0xA0, 0x91, 0x30,
+  0x45, 0xC2, 0xB1, 0xB7, 0xA3, 0x34, 0x2B, 0x14, 0x51, 0x00,
+  0xB8, 0xB6, 0xC8, 0x7E, 0xBE, 0x02, 0xF9, 0x84, 0xAB, 0xC7,
+  0x64, 0x53, 0xAA, 0x58, 0xBB, 0x74, 0x69, 0x66, 0xC3, 0x0E,
+  0x47, 0x4D, 0x21, 0xDA, 0xEB, 0x04, 0x08, 0x29, 0x00, 0x00,]
+
+msg = [0xe0,0x78,0x16,0xe1,0xdb,0xa1,0xda,0x61,0x53,0x66,0x34,0xbe,0xf2,0xc3,0xb6,0x34,0x6d,0x53,0x3c,0xc3,0xb6,0xb8,0x34,0xe3,0xbe,0xb6,0x34,0xc8,0x02,0x64,0x14,0x3c,0x34,0xe3,0x64,0x00,0xbb,0x4d,0xaa,0x69,0x02,0xff,0x64,0x34,0x14,0xe3,0xb8,0x34,0x4d,0xff,0x66,0x34,0xb8,0xb6,0x6d,0xb6,0xbb,0xc3,0x38,0x34,0x14,0x34,0x61,0xab,0x14,0x7e,0x04]
 for i in range(len(msg)):
-    print(chr(msg[i] ^ (i + ord(key[i]))),end=&#39;&#39;)
+    print(chr(table.index(msg[i])),end=&#39;&#39;)
+#DASCTF&#123;7ou_h@ve_5o1ved_4he_fina1_4ncrypti0n_a4d_y0u_de5erv3_a_7lag&#125;
 </code></pre>
-<h2 id="strange-code"><a href="#strange-code" class="headerlink" title="strange_code"></a>strange_code</h2><p>在线网站识别</p>
-<p>.-.—-… —.-..-.. .—–…. .-..—.-. -.-…—. -..—-… .-…—-. .–…—. ..—–… —.-…-. –..-..–. .-.-..—. .-.—..-. -.-..—.. .—.-.-.. -.–..-.-. .-.-..—. .-.—..-. …—.–. -..-.-.–. —.-…-. .-..–.–. -.-…—. —–….. ….—–.</p>
-<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/2024-04-28-14-04-06.png"></p>
-<h2 id="ezzzzz-Forensics"><a href="#ezzzzz-Forensics" class="headerlink" title="ezzzzz_Forensics"></a>ezzzzz_Forensics</h2><p>puzzle嗦一下<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164056289.png"><br>vc挂载，密码和文件都要用上</p>
-<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164124097.png"><br>file检查，E01镜像，改后缀名，挂载</p>
-<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164150970.png"></p>
-<p>恢复密钥只有一半<br><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164208298.png"><br>抽象画，npiet</p>
-<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164229415.png"></p>
-<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164237485.png"></p>
-<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164255956.png"></p>
-<p>八进制</p>
-<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164307182.png"></p>
-<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164314483.png"></p>
-<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240428164327282.png"></p>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="Ez-mc"><a href="#Ez-mc" class="headerlink" title="Ez_mc"></a>Ez_mc</h3><p>翻存档</p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240602235757921.png"></p>
+<p>PASS&#x3D;HDCTFWIN!</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv15050852/">https://www.bilibili.com/read/cv15050852/</a></p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240602235815348.png"></p>
+<p><a target="_blank" rel="noopener" href="https://sdercolin.github.io/utaformatix3/">https://sdercolin.github.io/utaformatix3/</a></p>
+<p>转换一下</p>
+<p>最后面疑似01</p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240602235831736.png"></p>
+<p><img src="https://raw.githubusercontent.com/Y0ungS/imgbed/main/images/image-20240602235840290.png"></p>
+<p><code>DASCTF&#123;1s_MC_the_best_PUZZLE_GAM3?&#125;</code></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达. </span>
